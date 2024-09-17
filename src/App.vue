@@ -1,21 +1,21 @@
 <script setup>
-import Header from './components/Header.vue'
-import Hours from './components/Hours.vue'
-import ActivityAmount from './components/ActivityAmount.vue';
+  import Header from './components/Header.vue'
+  import Hours from './components/Hours.vue'
+  import ActivityAmount from './components/ActivityAmount.vue';
+  import {ref, computed} from 'vue'
 
+  const activities = ref([
+    {id: 1, text: 'Monday', amount: 2},
+  ])
 
-import {ref, calculated} from 'vue'
+  const sum = computed(()=>{
+    return activities.value.reduce((acc, x)=>{
+      return acc+x.amount
+    },0)
+  })
 
-const activity = ref([])
-
-const sum = calculated(()=>{
-  return activity.value.reduce((acc, x)=>{
-    return acc+x.amount
-  },0)
-})
-
-const hoursIn = calculated(()=>{
-    return activity.value
+  const hoursIn = computed(()=>{
+    return activities.value
     .filter((x)=>x.amount>0)
     .reduce((acc, x)=>{
       return acc+x.amount
@@ -23,13 +23,18 @@ const hoursIn = calculated(()=>{
   })
 
 
-
 </script>
+
+
 
 <template>
 
-<Header></Header>
-<Hours :total="sum"></Hours>
-<ActivityAmount :hours="hoursIn"></ActivityAmount>
+  <Header></Header>
+  <div class="container">
+    <Hours :total="sum"></Hours>
+    <ActivityAmount :hours="hoursIn"></ActivityAmount>
+  </div>
+
+
 
 </template>
