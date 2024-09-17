@@ -11,7 +11,7 @@
 </script>
 
 <template>
-    <h4>Your Hours</h4>
+    <h4>Your Total Hours</h4>
     <h1 id="hours">{{ total }}</h1>
 
 </template>
