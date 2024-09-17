@@ -2,6 +2,7 @@
   import Header from './components/Header.vue'
   import Hours from './components/Hours.vue'
   import ActivityAmount from './components/ActivityAmount.vue';
+  import AddHours from './components/AddHours.vue';
   import {ref, computed} from 'vue'
 
   const activities = ref([
@@ -33,6 +34,7 @@
   <div class="container">
     <Hours :total="sum"></Hours>
     <ActivityAmount :hours="hoursIn"></ActivityAmount>
+    <AddHours></AddHours>
   </div>
 
 

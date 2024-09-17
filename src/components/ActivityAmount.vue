@@ -14,7 +14,7 @@
 
 <div class="act-amnt">
         <div>
-            <h4>Hours added</h4>
+            <h3>Hours added</h3>
             <p id="hours-plus" class="hours plus"> {{ hours }}</p>
         </div>
     </div>
