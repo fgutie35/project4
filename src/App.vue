@@ -5,7 +5,7 @@
   import AddHours from './components/AddHours.vue';
   import ActivityList from './components/ActivityList.vue';
 
-  import {ref, computed} from 'vue'
+  import {ref, computed, onMounted} from 'vue'
 
   const activities = ref([])
 
@@ -27,8 +27,9 @@
     activities.value.push({
       id: generateID(),
       text: activityData.text,
-      amouont: activityData.amount,
+      amount: activityData.amount,
     })
+    saveToLocalStorage()
 
   }
 
@@ -38,10 +39,24 @@ const generateID = () =>{
 
 const handleDelete = (id) =>{
   activities.value = activities.value.filter((x) => x.id !== id)
+  saveToLocalStorage()
 }
 
-</script>
+const saveToLocalStorage = () => {
+    localStorage.setItem('activities', JSON.stringify(activities.value))
+  }
 
+onMounted( () => {
+  const savedActivities = JSON.parse(localStorage.getItem('activities'))
+
+  if(savedActivities){
+    activities.value = savedActivities
+  }
+})
+
+
+
+</script>
 
 
 <template>

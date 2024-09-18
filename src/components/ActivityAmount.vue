@@ -5,7 +5,11 @@
         hours: {
             type: Number,
             require: true,
-        }
+        },
+        nonHours: {
+            type: Number,
+            require: true,
+        },
     })
 
 </script>

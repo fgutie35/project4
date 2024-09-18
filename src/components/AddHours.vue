@@ -30,7 +30,7 @@
             <input type="text" id="text" v-model="text" placeholder="Enter the day: ">
         </div>
         <div class="form-control">
-            <label for="text">Enter Hours: </label>
+            <label for="amount">Enter Hours: </label>
             <input type="text" id="amount" v-model="amount" placeholder="Enter your hours: ">
         </div>
         <button class="btn">Add Activity</button>

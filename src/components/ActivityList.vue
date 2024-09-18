@@ -23,9 +23,8 @@
     <ul id="list" class="list">
         <li v-for="x in activities" v-bind:key="x.id"
         v-bind:class="x.amount < 0 ? 'minus' : 'plus' ">
-        {{ x.text }} <span> hrs:{{ x.amount }}</span>
+        {{ x.text }} <span> hrs:   {{ x.amount }}</span>
         <button @click="deleteActivity(x.id)" class="delete-btn">X</button>
-
         </li>
 
   
