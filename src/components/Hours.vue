@@ -2,7 +2,7 @@
     import {defineProps} from 'vue'
 
     const props = defineProps({
-        total: {
+        hours: {
             type: Number,
             require: true,
         }
@@ -12,6 +12,6 @@
 
 <template>
     <h4>Your Total Hours</h4>
-    <h1 id="hours">{{ total }}</h1>
+    <h1 id="hours">{{ hours }}</h1> 
 
 </template>

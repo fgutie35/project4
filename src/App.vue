@@ -1,13 +1,13 @@
 <script setup>
-  import Header from './components/Header.vue'
-  import Hours from './components/Hours.vue'
+  import Header from './components/Header.vue';
+  import Hours from './components/Hours.vue';
   import ActivityAmount from './components/ActivityAmount.vue';
   import AddHours from './components/AddHours.vue';
+  import ActivityList from './components/ActivityList.vue';
+
   import {ref, computed} from 'vue'
 
-  const activities = ref([
-    {id: 1, text: 'Monday', amount: 2},
-  ])
+  const activities = ref([])
 
   const sum = computed(()=>{
     return activities.value.reduce((acc, x)=>{
@@ -23,6 +23,22 @@
     },0)
   })
 
+  const handleActivity = (activityData) =>{
+    activities.value.push({
+      id: generateID(),
+      text: activityData.text,
+      amouont: activityData.amount,
+    })
+
+  }
+
+const generateID = () =>{
+  return Math.floor(Math.random()*10000000)
+}
+
+const handleDelete = (id) =>{
+  activities.value = activities.value.filter((x) => x.id !== id)
+}
 
 </script>
 
@@ -34,7 +50,8 @@
   <div class="container">
     <Hours :total="sum"></Hours>
     <ActivityAmount :hours="hoursIn"></ActivityAmount>
-    <AddHours></AddHours>
+    <AddHours @activitySubmitted="handleActivity"></AddHours>
+    <ActivityList :activities="activities" @activityDeleted="handleDelete"></ActivityList>
   </div>
 
 
